@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        <title>KMFRI E-LEAVE</title>
+    </h:head>
+    <h:body style="background-color:#eeeff4">
+        <h:form >
+            <h:panelGrid columns="2" cellpadding="10">
+                <h:commandButton value="Home" action="hodpage?faces-redirect=true" class="title" />
+            <h:commandButton value="Logout" action="#{logOut.logout()}"/>
+         </h:panelGrid>
+      
+        <center>
+            <h:outputStylesheet library="css" name="style.css"  />
+            <div id ="banner" class="center">KMFRI Staff Portal</div>
+            <div id="top2" >    </div>
+       
+                <div id ="banner2" class="center">Generate Reports</div>
+                <h:panelGrid id="wit" columns="3" cellpadding="10">
+                    <h:commandButton value="Generate By Date" action="datereport"/>
+                    <h:commandButton value="Generate By Employee" action="empidreport"/>
+                    <h:commandButton value="Generate By Leave Name" action="leavereport"/>
+                    <h:commandButton value="Generate By Leave Name and Date" action="leavedatereport"/>
+                </h:panelGrid>
+     
+      
+                <div id ="banner1" >
+                    <h:dataTable bgcolor="e8eefa" value="#{processLeaveBacking.leaveApplications}" var="leaveApp"
+                                 binding="#{processLeaveBacking.leaveApps}" border="1">
+                        <h:column>
+                            <f:facet name="header">Employee Name</f:facet>
+                            #{leaveApp.leaveApplicationPK.empid}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Leave Name</f:facet>
+                            #{leaveApp.leaveApplicationPK.leavename}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Start Date</f:facet>
+                            <h:outputText value="#{leaveApp.leaveApplicationPK.startdate}">
+                                <f:convertDateTime timeStyle="short" />
+                            </h:outputText>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">End Date</f:facet>
+                            <h:outputText value="#{leaveApp.enddate}">
+                                <f:convertDateTime timeStyle="short" />
+                            </h:outputText>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Date Applied</f:facet>
+                            <h:outputText value="#{leaveApp.dateapplied}">
+                                <f:convertDateTime timeStyle="short" />
+                            </h:outputText>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Reason</f:facet>
+                            #{leaveApp.reason}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Approve</f:facet> 
+                            <c:if test= "#{processLeaveBacking.leaveApplications.rowCount > 0}">
+                                <h:commandButton value="Approve" 
+                                                 action="#{processLeaveBacking.approveApplication()}" />
+                            </c:if>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Reject</f:facet> 
+                            <c:if test= "#{processLeaveBacking.leaveApplications.rowCount > 0}">
+                                <h:commandButton value="Reject" 
+                                                 action="#{processLeaveBacking.rejectApplication()}" />
+                            </c:if>     
+                        </h:column> 
+                    </h:dataTable>
+                </div>
+            
+        </center>
+            </h:form>
+    </h:body>
+</html>
+

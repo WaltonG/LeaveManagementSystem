@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>KMFRI E-LEAVE</title>
+    </h:head>
+    <h:body style="background-color:#eeeff4">
+        <h:form >
+             <h:panelGrid columns="2" cellpadding="10">
+                <h:commandButton value="Home" action="hodpage?faces-redirect=true" class="title" />
+            <h:commandButton value="Logout" action="#{logOut.logout()}"/>
+         </h:panelGrid>
+        </h:form>
+        <center>
+            <h:outputStylesheet library="css" name="style.css"  />
+            <div id ="banner" class="center">KMFRI Staff Portal</div>
+            <div id="top2" >    </div>
+            <h:form >
+                <div id ="banner2" class="center">Give Recommendation</div>
+                <div  class="input">
+                    <h:panelGrid columns="3">
+                        <h:outputLabel for="recommendation" value="Recommendation:" />
+                        <h:inputTextarea label="Recommendation:" id="recommendation" required="true"
+                                         value="#{rejectBacking.recommendation}"/>
+                        <h:message for="recommendation" />
+                    </h:panelGrid>
+                </div>
+                <div  class="input">
+                    <h:commandButton value="Submit" action="#{rejectBacking.updateLeave()}"/>
+                    </div>
+            </h:form>
+        </center>
+    </h:body>
+</html>
+

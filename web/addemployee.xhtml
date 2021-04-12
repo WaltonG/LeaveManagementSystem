@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>KMFRI E-LEAVE</title>
+    </h:head>
+    <h:body style="background-color:#eeeff4">
+        <h:form >
+              <h:panelGrid columns="2" cellpadding="10">
+                <h:commandButton value="Home" action="adminpage?faces-redirect=true" class="title" />
+            <h:commandButton value="Logout" action="#{logOut.logout()}"/>
+         </h:panelGrid>
+        </h:form>
+        <center>
+            <h:outputStylesheet library="css" name="style.css"  />
+            <div id ="banner" class="center">KMFRI Staff Portal</div>
+            <div id="banner1">
+                <div id="top" class="center">    </div>
+                <div id="mid" class="center">
+                    <h:form id="addemployee">
+                        <div id ="banner2" class="center">Add Users</div>
+                        <div  class="input">
+                            <h:outputLabel for="empid">Employee Id:</h:outputLabel><br/> 
+                            <h:inputText id="empid" value="#{addEmployeeBacking.empid}" required="true" 
+                                         requiredMessage=" *Employee Id required"/>
+                            <h:message for="empid"/>
+                        </div>
+                        <div  class="input">
+                            <h:outputLabel for="fname">First Name:</h:outputLabel><br/> 
+                            <h:inputText id="fname" value="#{addEmployeeBacking.firstName}" required="true" 
+                                         requiredMessage=" *First Name required"/>
+                            <h:message for="fname"/>
+                        </div>
+                        <div  class="input">
+                            <h:outputLabel for="lname">Last Name:</h:outputLabel><br/> 
+                            <h:inputText id="lname" value="#{addEmployeeBacking.lastName}" required="true" 
+                                         requiredMessage=" *Last Name required"/>
+                            <h:message for="lname"/>
+                        </div>
+                        <div  class="input">
+                            <h:outputLabel for="password">Password:</h:outputLabel><br/> 
+                            <h:inputText id="password" value="#{addEmployeeBacking.password}" required="true" 
+                                         requiredMessage=" *Password required"/>
+                            <h:message for="password"/>
+                        </div>
+                        <div  class="input">
+                        <h:outputLabel for="leavedays" value="Leave Days:" /><br/>
+                <h:inputText label="Leave Days"
+                             id="leavedays" value="#{addEmployeeBacking.leavedays}"
+                             required="true" requiredMessage=" *Leave days required" converterMessage=" *Enter Only Digits"/>
+                <h:message for="leavedays" />
+                </div>
+                        <div  class="input">
+                            <h:outputLabel for="department">Department:</h:outputLabel><br/> 
+                            <h:selectOneMenu id="department"  value="#{addEmployeeBacking.department}" required="true" 
+                                             requiredMessage=" *Department required">
+                                <f:selectItem itemLabel="Select department" itemValue="#{null}" />
+                                <f:selectItem itemLabel="Accounts" itemValue="accounts" />
+                                <f:selectItem itemLabel="Human Resource" itemValue="human resource"/>
+                                <f:selectItem itemLabel="Information Technology" itemValue="information technology"/>
+                            </h:selectOneMenu>
+                            <h:message for="department"/>
+                        </div>
+                        <div  class="input">
+                            <h:outputLabel for="accesslevel">Access Level:</h:outputLabel><br/> 
+                            <h:selectOneMenu id="accesslevel"  value="#{addEmployeeBacking.accessLevel}" required="true" 
+                                             requiredMessage=" *User type required">
+                                <f:selectItem itemLabel="Select user type" itemValue=""/>
+                                <f:selectItem itemLabel="Head of department" itemValue="2"/>
+                                <f:selectItem itemLabel="Employee" itemValue="3"/>
+                            </h:selectOneMenu>
+                            <h:message for="accesslevel"/>
+                        </div><br/> 
+                        <div  class="input">
+                            <h:commandButton value="Add" action="#{addEmployeeBacking.addEmployee}" />
+                        </div>
+                    </h:form>
+                </div>
+                <div id="mid" class="center"></div>
+                <div id="mid" class="center"></div>
+                <div id="bot" class="center">    </div>
+            </div>
+        </center>
+    </h:body>
+</html>
+

@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>KMFRI E-LEAVE</title>
+    </h:head>
+    <h:body style="background-color:#eeeff4">
+        <h:form >
+             <h:panelGrid columns="2" cellpadding="10">
+                <h:commandButton value="Home" action="adminpage?faces-redirect=true" class="title" />
+            <h:commandButton value="Logout" action="#{logOut.logout()}"/>
+         </h:panelGrid>
+        </h:form>
+        <center>
+            <h:outputStylesheet library="css" name="style.css"  />
+            <div id ="banner" class="center">KMFRI Staff Portal</div>
+           <div id="top2">    </div>
+                <div class="center">
+                    <h:form id="updatebalance" style="background-color: e8eefa">
+                         <div id="banner1">
+                        <div class="center">Update Leave Balance</div><br/>
+                        <div  class="input">
+                            <h:outputLabel for="empid" value="Employee ID:" /><br/>
+                            <h:selectOneMenu id="empid" label="Employee ID"
+                                             value="#{updateLeaveBacking.empid}" required="true"
+                                             requiredMessage=" *Leave type required">
+                               <f:selectItem itemLabel="Select employee id" itemValue="#{null}" />
+                               <f:selectItems value="#{updateLeaveBacking.empIds}" itemLabel="Select leave type"/>
+                            </h:selectOneMenu>
+                            <h:message for="empid" />
+                        </div><br/>
+                        <div  class="input">
+                            <h:commandButton value="Update" 
+                                             action="#{updateLeaveBacking.apply()}"/>
+                        </div>
+                        </div>
+                    </h:form>
+                
+            </div>
+        </center>
+    </h:body>
+</html>
+

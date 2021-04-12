@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>KMFRI E-LEAVE</title>
+
+    </h:head>
+    <h:body style="background-color:#eeeff4">
+        <center>
+        <h:outputStylesheet library="css" name="style.css"  />
+
+        <div id ="banner" class="center">KMFRI Staff Portal</div>
+        <div id="main">
+            <div id="top" class="center">    </div>
+            <div id="mid" class="center">
+                <h:form id="emplogin"> 
+               <div  class="input">
+                <h:outputLabel for="empid">User ID:</h:outputLabel><br/>  
+                <h:inputText id="empid" value="#{userCredentials.employeeID}"/>
+                <h:message for="empid"/>
+                </div>
+            <div  class="input">
+                <h:outputLabel for="password">Password:</h:outputLabel> <br/> 
+                <h:inputSecret id="password" value="#{userCredentials.password}"/>
+                 <h:message for="password"/>
+                </div>
+                    <div  class="input">
+            <h:commandButton id="login" value="Login" action="#{login.login()}"  /> 
+            </div>
+            <div  class="input">
+	
+                <h:commandLink action="resetpassword">forgot password?</h:commandLink>
+	</div>
+        </h:form>
+                </div>
+   <div id="bot" class="center">    </div>
+ </div>
+        </center>
+    </h:body>
+</html>
+

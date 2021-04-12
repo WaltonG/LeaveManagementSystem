@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>KMFRI E-LEAVE</title>
+    </h:head>
+    <h:body style="background-color:#eeeff4">
+       <h:form >
+             <h:commandButton value="Logout" action="#{logOut.logout()}" class="title1"/>
+        </h:form>
+        <center>
+            <h:outputStylesheet library="css" name="style.css"  />
+            <div id ="banner" class="center">KMFRI Staff Portal</div>
+            <div id="banner1">
+                <div id="top" class="center">    </div>
+                <div id="mid" class="center">
+                    <h:form>
+                        <div id ="banner2" class="center">Leave Task</div>
+                        <h:panelGrid columns="3" cellpadding="10">
+                            <h:commandButton value="Apply Leave" action="applyLeave"/>
+                            <h:commandButton value="Check Leaves" action="checkLeaves"/>
+                            <h:commandButton value="Cancel Leave" action="cancelLeave"/>
+                        </h:panelGrid>
+                    </h:form>
+                </div>
+                <div id="bot" class="center">    </div>
+            </div>
+        </center>
+    </h:body>
+</html>
+

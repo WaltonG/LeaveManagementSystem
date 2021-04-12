@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        <title>KMFRI E-LEAVE</title>
+    </h:head>
+    <h:body style="background-color:#eeeff4">
+        <h:form >
+            <h:panelGrid columns="2" cellpadding="10">
+                <h:commandButton value="Home" action="adminpage?faces-redirect=true" class="title" />
+            <h:commandButton value="Logout" action="#{logOut.logout()}"/>
+         </h:panelGrid>
+        </h:form>
+        <center>
+            <h:outputStylesheet library="css" name="style.css"  />
+            <div id ="banner" class="center">KMFRI Staff Portal</div>
+            <div id="top2" >    </div>
+            <h:form>
+                <div id="banner1">
+                    <div class = "center">Users List</div><br/>
+                    <h:dataTable bgcolor="e8eefa" value="#{usersListBacking.employees}" var="employeeApp"
+                                 binding="#{usersListBacking.employeeApps}" border="1">
+
+                        <h:column>
+                            <f:facet name="header">Employee Id</f:facet>
+                            #{employeeApp.empid}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">First Name</f:facet>
+                            #{employeeApp.firstname}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Last Name</f:facet>
+                            #{employeeApp.lastname}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Department</f:facet>
+                            #{employeeApp.department}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Access Level</f:facet>
+                            #{employeeApp.accesslevel}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Delete</f:facet> 
+                            <h:commandButton value="Delete" 
+                                             action="#{usersListBacking.delete()}" />    
+                        </h:column> 
+
+
+                    </h:dataTable>
+                </div>
+            </h:form>
+        </center>
+    </h:body>
+</html>
+

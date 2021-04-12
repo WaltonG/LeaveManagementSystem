@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>KMFRI E-LEAVE</title>
+    </h:head>
+    <h:body style="background-color:#eeeff4">
+        <h:form>
+             <h:panelGrid columns="2" cellpadding="10">
+                <h:commandButton value="Home" action="adminpage?faces-redirect=true" class="title" />
+            <h:commandButton value="Logout" action="#{logOut.logout()}"/>
+         </h:panelGrid>
+        </h:form>
+        <center>
+            <h:outputStylesheet library="css" name="style.css"  />
+            <div id ="banner" class="center">KMFRI Staff Portal</div>
+            <div id="banner1">
+                <div id="top" class="center">    </div>
+                <div id="mid" class="center">
+                    <h:form id="addleave">
+                        <div id ="banner2" class="center">Add Leaves</div>
+                        <div class="center5">
+                        <h:panelGrid >
+                            <div  class="input">
+                                <h:outputLabel for="leavename" value="Leave Name:" /><br/>
+                                <h:inputText label="Leave Name"
+                                             id="leavename" value="#{addLeaveBacking.leavename}"
+                                             required="true" requiredMessage=" *Leave Name required"/>
+                                <h:message for="leavename" />
+                            </div>
+                        </h:panelGrid>
+                            </div>
+                        <div  class="input">
+                            <h:commandButton value="Add" 
+                                             action="#{addLeaveBacking.addLeave()}" />
+                        </div>
+                    </h:form>
+                    <div id="bot" class="center">    </div>
+                </div>
+            </div>
+        </center>
+    </h:body>
+</html>
+

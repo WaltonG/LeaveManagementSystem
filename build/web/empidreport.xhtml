@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+   <h:head>
+        <title>KMFRI E-LEAVE</title>
+    </h:head>
+    <h:body style="background-color:#eeeff4">
+        <h:form >
+            <h:panelGrid columns="2" cellpadding="10">
+                <h:commandButton value="Back" action="processleave?faces-redirect=true" class="title" />
+            <h:commandButton value="Logout" action="#{logOut.logout()}"/>
+         </h:panelGrid>
+        </h:form>
+        <center>
+            <h:outputStylesheet library="css" name="style.css"  />
+            <div id ="banner" class="center">KMFRI Staff Portal</div>
+            <div id="top2" >    </div>
+            <h:form id="empsearch">
+                <div id ="banner2" class="center">Search By Emloyee ID</div>
+                <div  class="input">
+                    <h:outputLabel for="empid" value="Emloyee ID:" /><br/>
+                    <h:inputText label="Emloyee ID:"
+                                 id="empid" value="#{empIdReportBacking.empid}" 
+                                 required="true"  requiredMessage=" *Emloyee ID required">
+                    </h:inputText>
+                    <h:message for="empid" />
+                </div>
+                <div  class="input">
+                <h:commandButton value="Search" action="#{empIdReportBacking.search}"/>
+                </div>
+            </h:form>
+            <div id ="banner1" >
+                <h:dataTable bgcolor="e8eefa" value="#{empIdReportBacking.leaveApplications}" var="leaveApp"
+                             binding="#{empIdReportBacking.leaveApps}" border="1">
+                    <h:column>
+                        <f:facet name="header">Employee ID</f:facet>
+                        #{leaveApp.leaveApplicationPK.empid}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">First Name</f:facet>
+                        #{leaveApp.firstname}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">Last Name</f:facet>
+                        #{leaveApp.lastname}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">Leave Name</f:facet>
+                        #{leaveApp.leaveApplicationPK.leavename}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">Start Date</f:facet>
+                        <h:outputText value="#{leaveApp.leaveApplicationPK.startdate}">
+                            <f:convertDateTime timeStyle="short" />
+                        </h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">End Date</f:facet>
+                        <h:outputText value="#{leaveApp.enddate}">
+                            <f:convertDateTime timeStyle="short" />
+                        </h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">Date Applied</f:facet>
+                        <h:outputText value="#{leaveApp.dateapplied}">
+                            <f:convertDateTime timeStyle="short" />
+                        </h:outputText>
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">Status</f:facet>
+                        #{leaveApp.status}
+                    </h:column>
+
+                </h:dataTable>
+            </div>
+        </center>
+    </h:body>
+</html>
+

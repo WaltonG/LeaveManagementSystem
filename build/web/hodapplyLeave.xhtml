@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>KMFRI E-LEAVE</title>
+        <link href="css/styles.css"
+              rel="stylesheet" type="text/css"/>
+
+        <link rel="stylesheet" type="text/css" href="js/ui/development-bundle/themes/cupertino/jquery.ui.all.css"/>
+        <script src="js/ui/development-bundle/jquery-1.4.4.js"></script>
+        <script src="js/ui/development-bundle/ui/jquery.ui.core.js"></script>
+        <script src="js/ui/development-bundle/ui/jquery.ui.widget.js"></script>
+        <script src="js/ui/development-bundle/ui/jquery.ui.datepicker.js"></script>
+        <script>
+            $(function() {
+                $( ".dterented" ).datepicker(
+                {
+                    
+                    minDate: 0,
+                    maxDate: "+60D",
+                    
+                
+                    "dateFormat" : "yy-mm-dd"
+                }
+            );
+            });
+        </script>
+    </h:head>
+    <h:body style="background-color:#eeeff4">
+        <h:form >
+             <h:panelGrid columns="2" cellpadding="10">
+                <h:commandButton value="Home" action="hodpage?faces-redirect=true" class="title" />
+            <h:commandButton value="Logout" action="#{logOut.logout()}"/>
+         </h:panelGrid>
+        </h:form>
+        <center>
+            <h:outputStylesheet library="css" name="style.css"  />
+            <div id ="banner" class="center">KMFRI Staff Portal</div>
+           <div id="top2">    </div>
+                <div class="center">
+                    <h:form id="applyleave" style="background-color: e8eefa">
+                         <div id="banner1">
+                        <div class="center">Apply Leave</div><br/>
+                        <div  class="input">
+                            <h:outputLabel for="leavenames" value="Leave Type:" /><br/>
+                            <h:selectOneMenu id="leavenames" label="Leave Name"
+                                             value="#{leaveDetails.leavename}" required="true"
+                                             requiredMessage=" *Leave type required">
+                               <f:selectItem itemLabel="Select leave type" itemValue="#{null}" />
+                               <f:selectItems value="#{leaveDetails.leavenames}" itemLabel="Select leave type"/>
+                            </h:selectOneMenu>
+                            <h:message for="leavenames" />
+                        </div><br/>
+                        <div  class="input">
+                            <h:outputLabel for="startdate" value="Start Date:" /><br/>
+                            <h:inputText label="Start Date:"
+                                         id="startdate" value="#{leaveDetails.startdate}" 
+                                         required="true"  requiredMessage=" *Start Date required" styleClass="dterented">
+                            </h:inputText>  
+                            <h:message for="startdate" />
+                        </div><br/>
+                        <div  class="input">
+                            <h:outputLabel for="days" value="Days:" /><br/>
+                            <h:inputText label="Days:"
+                                         id="days" value="#{leaveDetails.days}"
+                                         converterMessage=" *Enter Only Digits"
+                                         required="true" requiredMessage=" *Days required"/>
+                            <h:message for="days" />
+                        </div><br/>
+                        <div  class="input">
+                            <h:outputLabel for="reason" value="Reason:" /><br/>
+                            <h:inputTextarea label="Reason:" id="reason" required="true"
+                                             requiredMessage=" *Reason required"
+                                             value="#{leaveDetails.reason}"/>
+                            <h:message for="reason" />
+                        </div>
+                        <div  class="input">
+                            <h:commandButton value="Apply" 
+                                             action="#{applyLeave.apply()}"/>
+                        </div>
+                        </div>
+                    </h:form>
+                
+            </div>
+        </center>
+    </h:body>
+</html>
+

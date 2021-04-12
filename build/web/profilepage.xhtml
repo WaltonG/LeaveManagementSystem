@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>KMFRI E-LEAVE</title>
+    </h:head>
+    <h:body style="background-color:#eeeff4">
+        <h:form >
+             <h:commandButton value="Logout" action="#{logOut.logout()}" class="title1"/>
+        </h:form>
+        <center>
+            <h:outputStylesheet library="css" name="style.css"  />
+<div id ="banner" class="center">KMFRI Staff Portal</div>
+            <div id="main">
+                <div id="top" class="center">    </div>
+                <div id="mid" class="center">
+                    <h:form id="adminprofile">
+                        <div  class="input">
+                            <h:outputLabel for="secretquestion">What is your favourite food ?</h:outputLabel><br/> 
+                            <h:inputText id="secretquestion" value="#{adminProfileBacking.secretQuestion}" required="true" 
+                                         requiredMessage=" *Field Required"/>
+                            <h:message for="secretquestion"/>
+                        </div>
+                        <div  class="input">
+                            <h:outputLabel for="password1">New Password:</h:outputLabel> <br/> 
+                            <h:inputSecret id="password1" value="#{adminProfileBacking.passwordOne}" required="true"
+                                           requiredMessage=" *Field Required"/>
+                            <h:message for="password1"/>
+                        </div>
+                        <div  class="input">
+                            <h:outputLabel for="password">Re-Enter Password:</h:outputLabel><br/>  
+                            <h:inputSecret id="password" value="#{adminProfileBacking.passwordTwo}" required="true"
+                                           requiredMessage=" *Field Required"/>
+                            <h:message for="password"/>
+                        </div>
+                        <div  class="input">
+                            <h:commandButton id="submit" value="Submit" action="#{adminProfileBacking.submit()}"  />
+                        </div>
+                      
+                    </h:form> 
+                </div>
+                <div id="bot" class="center">    </div>
+            </div>
+        </center>
+    </h:body>
+</html>
+
+
